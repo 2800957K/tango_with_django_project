@@ -8,6 +8,7 @@ from rango.forms import PageForm
 from django.urls import reverse
 
 def index(request):
+    return HttpResponse("Rango says hey there partner! <a href='/rango/about'>About</a>")
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5]
     context_dict = {}
@@ -18,7 +19,7 @@ def index(request):
     return render(request, 'rango/index.html', context=context_dict)
     
 def about(request):
-    #return HttpResponse("Rango says here is the about page.\n <a href='/rango/'>Index</a>")
+    return HttpResponse("Rango says here is the about page.\n <a href='/rango/'>Index</a>")
     context_dict = {}
     return render(request, "rango/about.html", context=context_dict)
 
